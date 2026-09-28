@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Market Price Info | AI Agriculture Advisory</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f1f8e9;
+      padding: 30px;
+    }
+    h1 {
+      color: #2e7d32;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    input {
+      width: 300px;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    table {
+      width: 90%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #ccc;
+      text-align: center;
+    }
+    th {
+      background-color: #2e7d32;
+      color: white;
+    }
+    tr:hover {
+      background-color: #e8f5e9;
+    }
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+    }
+    .back a {
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌾 Market Price Information</h1>
+  
+  <input type="text" id="searchCrop" placeholder="Search crop name (e.g. Wheat, Rice)" />
+
+  <table id="priceTable">
+    <thead>
+      <tr>
+        <th>Crop</th>
+        <th>State</th>
+        <th>Market</th>
+        <th>Price (₹ / Quintal)</th>
+      </tr>
+    </thead>
+    <tbody id="priceBody">
+      <!-- Dynamic rows go here -->
+    </tbody>
+  </table>
+
+  <div class="back">
+    <a href="dashboard.html">⬅ Back to Dashboard</a>
+  </div>
+
+  <script>
+    // Dummy market price data (can be replaced with API)
+    const prices = [
+      { crop: "Wheat", state: "Punjab", market: "Ludhiana", price: 2150 },
+      { crop: "Rice", state: "West Bengal", market: "Kolkata", price: 2500 },
+      { crop: "Maize", state: "Madhya Pradesh", market: "Indore", price: 1700 },
+      { crop: "Sugarcane", state: "Uttar Pradesh", market: "Meerut", price: 320 },
+      { crop: "Cotton", state: "Gujarat", market: "Rajkot", price: 6600 },
+      { crop: "Soybean", state: "Maharashtra", market: "Nagpur", price: 4100 },
+      { crop: "Onion", state: "Maharashtra", market: "Nashik", price: 1200 },
+      { crop: "Potato", state: "Uttar Pradesh", market: "Agra", price: 950 },
+    ];
+
+    const priceBody = document.getElementById("priceBody");
+    const searchInput = document.getElementById("searchCrop");
+
+    function displayPrices(data) {
+      priceBody.innerHTML = "";
+      data.forEach(item => {
+        const row = `<tr>
+                      <td>${item.crop}</td>
+                      <td>${item.state}</td>
+                      <td>${item.market}</td>
+                      <td>₹ ${item.price}</td>
+                    </tr>`;
+        priceBody.innerHTML += row;
+      });
+    }
+
+    // Initial load
+    displayPrices(prices);
+
+    // Filter on search
+    searchInput.addEventListener("input", function () {
+      const value = this.value.toLowerCase();
+      const filtered = prices.filter(item => item.crop.toLowerCase().includes(value));
+      displayPrices(filtered);
+    });
+  </script>
+</body>
+</html>

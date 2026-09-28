@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agriculture Advisory System</title>
+  <style>
+    /* ----------------- Basic Setup ----------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #f0fff4;
+      color: #2e7d32;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ----------------- Navbar ----------------- */
+    nav {
+      background: #2e7d32;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 40px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    nav h1 {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #c8e6c9;
+    }
+
+    /* ----------------- Hero Section ----------------- */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url('https://images.unsplash.com/photo-1592991538534-4c5c08f3a3c3?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
+
+    .hero h2 {
+      font-size: 42px;
+      margin-bottom: 15px;
+      font-weight: 700;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 700px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      background: #4caf50;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #1b5e20;
+      transform: translateY(-2px);
+    }
+
+    /* ----------------- About Section ----------------- */
+    #about {
+      text-align: center;
+      padding: 60px 20px;
+      background: #f9fff9;
+    }
+
+    #about h2 {
+      color: #1b5e20;
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    #about p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #333;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    /* ----------------- Contact Section ----------------- */
+    #contact {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    #contact h2 {
+      color: #1b5e20;
+      margin-bottom: 10px;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    input,
+    textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+
+    button {
+      background: #2e7d32;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #1b5e20;
+    }
+
+    /* ----------------- Footer ----------------- */
+    footer {
+      background: #2e7d32;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 14px;
+      margin-top: auto;
+    }
+
+    /* ----------------- Responsive ----------------- */
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero h2 {
+        font-size: 30px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .btn-group {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <h1>🌾 AI Agriculture Advisory</h1>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="market.html">Market Price</a></li>
+      <li><a href="login.html">Advisory</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2>Empowering Farmers with Smart AI Advisory 🌱</h2>
+    <p>
+      Get real-time crop advice, weather updates, and market price information using Artificial Intelligence.
+      Helping farmers make better decisions for a sustainable and profitable future.
+    </p>
+    <div class="btn-group">
+      <a href="login.html" class="btn">Get AI Advisory</a>
+      <a href="market.html" class="btn" style="background:#66bb6a;">Market Info</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About the Project</h2>
+    <p>
+      The AI Agriculture Advisory System is designed to help farmers receive personalized suggestions
+      based on soil, weather, and crop conditions. It integrates AI and IoT data to provide the best
+      farming practices, boosting yield and reducing crop loss.
+    </p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>We’re always here to help farmers grow better 🌾</p>
+
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 AI Agriculture Advisory System | Developed by shreya gupta| Roll No: 60
+  </footer>
+
+</body>
+
+</html>

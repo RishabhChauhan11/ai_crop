@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1784288626447,
+    "imageName": "Screenshot 2026-07-17 135900.png",
+    "imageUrl": "/uploads/crop_1784288626447.png",
+    "detectedDisease": "Powdery Mildew",
+    "confidence": "97.5",
+    "timestamp": "2026-07-17T11:43:46.452Z"
+  },
+  {
+    "id": 1784289635318,
+    "imageName": "Screenshot 2026-07-17 135932.png",
+    "imageUrl": "/uploads/crop_1784289635318.png",
+    "detectedDisease": "Powdery Mildew",
+    "confidence": "89.8",
+    "timestamp": "2026-07-17T12:00:35.324Z"
+  }
+]

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Agriculture Advisory | Login & Register</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: url('https://img.freepik.com/premium-photo/farmers-assessing-crop-growth-lush-green-fields-with-tractor-nearby-sunny-day_906809-28105.jpg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      width: 380px;
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: #2e7d32;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1b5e20;
+    }
+
+    .link {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .link a {
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .link a:hover {
+      text-decoration: underline;
+    }
+
+    #registerForm {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Login Form -->
+    <div id="loginForm">
+      <h2>🌾 Welcome Back</h2>
+      <p>Login to your AI Agriculture Advisory Dashboard</p>
+
+      <form id="loginFormElement">
+        <select id="loginUserType" required>
+          <option value="farmer" selected>Farmer</option>
+          <option value="admin">Admin</option>
+        </select>
+        <input type="text" id="loginUsername" placeholder="Enter Username" required />
+        <input type="password" id="loginPassword" placeholder="Enter Password" required />
+        <button type="submit">Login</button>
+      </form>
+
+      <div class="link">
+        <p>Don't have an account? <a id="showRegister">Register</a></p>
+      </div>
+
+      <div class="link">
+        <a href="index.html">⬅ Back to Home</a>
+      </div>
+    </div>
+
+    <!-- Register Form -->
+    <div id="registerForm">
+      <h2>🌱 Create Account</h2>
+      <p>Join AI Agriculture Advisory Platform</p>
+
+      <form id="registerFormElement">
+        <select id="registerUserType" required>
+          <option value="farmer" selected>Farmer</option>
+          <option value="admin">Admin</option>
+        </select>
+        <input type="text" id="registerName" placeholder="Full Name" required />
+        <input type="text" id="registerUsername" placeholder="Username" required />
+        <input type="password" id="registerPassword" placeholder="Password" required />
+        <input type="email" id="registerEmail" placeholder="Email Address" required />
+        <button type="submit">Register</button>
+      </form>
+
+      <div class="link">
+        <p>Already have an account? <a id="showLogin">Login</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Show/hide toggle
+    document.getElementById("showRegister").addEventListener("click", function() {
+      document.getElementById("loginForm").style.display = "none";
+      document.getElementById("registerForm").style.display = "block";
+    });
+
+    document.getElementById("showLogin").addEventListener("click", function() {
+      document.getElementById("registerForm").style.display = "none";
+      document.getElementById("loginForm").style.display = "block";
+    });
+
+    // Login
+    document.getElementById("loginFormElement").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const type = document.getElementById("loginUserType").value;
+      const user = document.getElementById("loginUsername").value.trim();
+      const pass = document.getElementById("loginPassword").value.trim();
+
+      const users = JSON.parse(localStorage.getItem("users") || "[]");
+      // 🔐 Default admin and farmer login (hardcoded)
+      if (type === "admin" && user.toLowerCase() === "admin" && pass === "admin123") {
+        alert("Admin login successful!");
+        window.location.href = "dashboard.html";
+        return;
+      }
+      if (type === "farmer" && user.toLowerCase() === "farmer" && pass === "farmer123") {
+        alert("Farmer login successful!");
+        window.location.href = "dashboard.html";
+        return;
+      }
+
+
+      const match = users.find(u => u.username.toLowerCase() === user.toLowerCase() && u.password === pass && u.type === type);
+
+      if (match) {
+        alert(`${type} login successful!`);
+        window.location.href = "dashboard.html";
+      } else {
+        alert("Invalid credentials. Try again!");
+      }
+    });
+
+    // Register
+    document.getElementById("registerFormElement").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("registerName").value.trim();
+      const user = document.getElementById("registerUsername").value.trim();
+      const pass = document.getElementById("registerPassword").value.trim();
+      const email = document.getElementById("registerEmail").value.trim();
+      const type = document.getElementById("registerUserType").value;
+
+      if (!name || !user || !pass || !email || !type) {
+        alert("Please fill all fields!");
+        return;
+      }
+
+      const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+      const exists = users.find(u => u.username === user);
+      if (exists) {
+        alert("Username already taken. Try another.");
+        return;
+      }
+
+      users.push({ name, username: user, password: pass, email, type });
+      localStorage.setItem("users", JSON.stringify(users));
+
+      alert("Registration successful! Please login.");
+
+      document.getElementById("registerForm").style.display = "none";
+      document.getElementById("loginForm").style.display = "block";
+    });
+  </script>
+</body>
+</html>
